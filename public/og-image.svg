@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="gl" cx="25%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0e1219" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gr" cx="75%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ff6a00" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0e1219" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0e1219"/>
+  <rect width="1200" height="630" fill="url(#gl)"/>
+  <rect width="1200" height="630" fill="url(#gr)"/>
+
+  <!-- Grid lines -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+  </g>
+
+  <!-- Top accent line -->
+  <defs>
+    <linearGradient id="topline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0e1219"/>
+      <stop offset="30%" stop-color="#00d4ff"/>
+      <stop offset="70%" stop-color="#ff6a00"/>
+      <stop offset="100%" stop-color="#0e1219"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1200" height="2" fill="url(#topline)" opacity="0.6"/>
+
+  <!-- Main logo text -->
+  <text x="600" y="300" text-anchor="middle" dominant-baseline="middle"
+    font-family="Arial Black, Helvetica, sans-serif" font-weight="900"
+    font-size="160" letter-spacing="-4">
+    <tspan fill="#00d4ff">P</tspan><tspan fill="#ffffff">A</tspan><tspan fill="#8a9bb0">r</tspan><tspan fill="#ffffff">A</tspan><tspan fill="#8a9bb0">s</tspan><tspan fill="#ff6a00">Y</tspan><tspan fill="#8a9bb0">t</tspan><tspan fill="#ffffff">E</tspan>
+  </text>
+
+  <!-- cloud subtitle -->
+  <text x="600" y="380" text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif" font-weight="300"
+    font-size="40" fill="#526070" letter-spacing="20">cloud</text>
+
+  <!-- Divider line -->
+  <defs>
+    <linearGradient id="divline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="30%" stop-color="#00d4ff" stop-opacity="0.5"/>
+      <stop offset="70%" stop-color="#ff6a00" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+  </defs>
+  <rect x="350" y="415" width="500" height="1" fill="url(#divline)"/>
+
+  <!-- Tagline -->
+  <text x="600" y="455" text-anchor="middle"
+    font-family="monospace" font-size="18" fill="#526070" letter-spacing="8">
+    SECURITY · INTELLIGENCE · CONTROL
+  </text>
+
+  <!-- Bottom pills -->
+  <g font-family="monospace" font-size="14" letter-spacing="3">
+    <!-- EDR pill -->
+    <rect x="290" y="490" width="80" height="26" rx="13" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.3"/>
+    <text x="330" y="507" text-anchor="middle" fill="#00d4ff">EDR</text>
+    <!-- RMM pill -->
+    <rect x="385" y="490" width="80" height="26" rx="13" fill="rgba(255,106,0,0.1)" stroke="#ff6a00" stroke-width="1" stroke-opacity="0.3"/>
+    <text x="425" y="507" text-anchor="middle" fill="#ff6a00">RMM</text>
+    <!-- DLP pill -->
+    <rect x="480" y="490" width="80" height="26" rx="13" fill="rgba(255,184,0,0.1)" stroke="#ffb800" stroke-width="1" stroke-opacity="0.3"/>
+    <text x="520" y="507" text-anchor="middle" fill="#ffb800">DLP</text>
+    <!-- mTLS pill -->
+    <rect x="575" y="490" width="90" height="26" rx="13" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.3"/>
+    <text x="620" y="507" text-anchor="middle" fill="#00d4ff">mTLS</text>
+    <!-- AWS pill -->
+    <rect x="680" y="490" width="90" height="26" rx="13" fill="rgba(255,106,0,0.1)" stroke="#ff6a00" stroke-width="1" stroke-opacity="0.3"/>
+    <text x="725" y="507" text-anchor="middle" fill="#ff6a00">AWS</text>
+    <!-- K8s pill -->
+    <rect x="785" y="490" width="90" height="26" rx="13" fill="rgba(255,184,0,0.1)" stroke="#ffb800" stroke-width="1" stroke-opacity="0.3"/>
+    <text x="830" y="507" text-anchor="middle" fill="#ffb800">K8s</text>
+  </g>
+
+  <!-- URL -->
+  <text x="600" y="580" text-anchor="middle"
+    font-family="monospace" font-size="16" fill="#3d4e60" letter-spacing="4">
+    parasyte.cloud
+  </text>
+</svg>

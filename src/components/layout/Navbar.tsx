@@ -25,7 +25,7 @@ export default function Navbar({curPage,goPage}:Props){
         display:"flex",alignItems:"center",
         padding:"0 clamp(16px,4vw,56px)",
         borderBottom:"1px solid rgba(255,255,255,0.08)",
-        borderRadius:0,position:"relative",zIndex:100,
+        borderRadius:0,position:"relative",zIndex:100,overflow:"visible",
       }}>
         {/* Logo */}
         <button onClick={()=>go(0)} style={{fontFamily:"var(--font-rajdhani)",fontSize:"1.3rem",fontWeight:700,letterSpacing:".04em",flexShrink:0,background:"none",border:"none",cursor:"pointer",display:"flex",alignItems:"baseline",gap:"3px",padding:0,position:"relative",zIndex:1}}>

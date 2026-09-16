@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, Info } from "lucide-react";
 
 const NAV=[
   {label:"Home",page:0},{label:"Products",page:1},{label:"Development",page:2},
@@ -8,11 +8,13 @@ const NAV=[
   {label:"Infra",page:6},{label:"Contact",page:7},
 ];
 const BROWSER_DOWNLOAD_URL = "https://github.com/Parasyte-cloud/gatehouse/releases/download/v0.1.0-desktop/PArAsYtE.Browser-0.1.0-arm64.dmg";
+const ROOM7_DESCRIPTION = "Room 7 is RideArrivo's white-label virtual event room for investor calls, town halls, and product launches \u2014 invitation- or passcode-gated, for guests outside the company. Built and run by RideArrivo, a separate company in the portfolio, not a Parasyte Cloud product. It only opens with a specific event link, so there's no general app to open here.";
 
 interface Props{curPage:number;goPage:(n:number)=>void}
 
 export default function Navbar({curPage,goPage}:Props){
   const [open,setOpen]=useState(false);
+  const [roomInfoOpen,setRoomInfoOpen]=useState(false);
   const go=(n:number)=>{goPage(n);setOpen(false)};
 
   return(
@@ -56,6 +58,16 @@ export default function Navbar({curPage,goPage}:Props){
           <a href={BROWSER_DOWNLOAD_URL} className="btn-ice" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",textDecoration:"none"}}>
             <Download size={13}/> Browser (macOS)
           </a>
+          <div style={{position:"relative"}}>
+            <button onClick={()=>setRoomInfoOpen(v=>!v)} className="lg" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",color:"var(--muted)",cursor:"pointer",border:"none"}}>
+              <Info size={13}/> Room 7
+            </button>
+            {roomInfoOpen&&(
+              <div className="lg lg-dark" style={{position:"absolute",top:"calc(100% + 8px)",right:0,width:"280px",padding:"14px",borderRadius:"12px",fontFamily:"var(--font-inter)",fontSize:".72rem",lineHeight:1.6,color:"var(--muted)",zIndex:200,boxShadow:"0 20px 50px rgba(0,0,0,.5)"}}>
+                {ROOM7_DESCRIPTION}
+              </div>
+            )}
+          </div>
           <button onClick={()=>go(3)} className="btn-ice" style={{fontSize:".72rem",padding:"6px 14px"}}>Scanner</button>
           <button onClick={()=>go(7)} className="btn-solid" style={{fontSize:".72rem",padding:"6px 14px",color:"#000"}}>Get Access</button>
         </div>
@@ -73,6 +85,14 @@ export default function Navbar({curPage,goPage}:Props){
           <a href={BROWSER_DOWNLOAD_URL} className="btn-ice" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"12px",textDecoration:"none"}}>
             <Download size={15}/> Download Browser (macOS)
           </a>
+          <button onClick={()=>setRoomInfoOpen(v=>!v)} className="lg" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"8px",color:"var(--muted)",border:"none",cursor:"pointer"}}>
+            <Info size={15}/> What's Room 7?
+          </button>
+          {roomInfoOpen&&(
+            <div style={{fontFamily:"var(--font-inter)",fontSize:".78rem",lineHeight:1.6,color:"var(--muted)",padding:"10px 4px 2px"}}>
+              {ROOM7_DESCRIPTION}
+            </div>
+          )}
           <div style={{display:"flex",gap:"8px",paddingTop:"10px",borderTop:"1px solid rgba(255,255,255,.07)",marginTop:"10px"}}>
             <button onClick={()=>go(3)} className="btn-ice" style={{flex:1,fontSize:".8rem",padding:"10px"}}>Scanner</button>
             <button onClick={()=>go(7)} className="btn-solid" style={{flex:1,fontSize:".8rem",padding:"10px",color:"#000"}}>Get Access</button>

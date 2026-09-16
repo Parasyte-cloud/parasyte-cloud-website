@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 const NAV=[
   {label:"Home",page:0},{label:"Products",page:1},{label:"Development",page:2},
   {label:"Scanner",page:3},{label:"Platform",page:4},{label:"PArA PIN",page:5},
   {label:"Infra",page:6},{label:"Contact",page:7},
 ];
+const BROWSER_DOWNLOAD_URL = "https://github.com/Parasyte-cloud/gatehouse/releases/download/v0.1.0-desktop/PArAsYtE.Browser-0.1.0-arm64.dmg";
+
 interface Props{curPage:number;goPage:(n:number)=>void}
 
 export default function Navbar({curPage,goPage}:Props){
@@ -51,6 +53,9 @@ export default function Navbar({curPage,goPage}:Props){
 
         {/* CTAs */}
         <div style={{display:"flex",gap:"8px",flexShrink:0,position:"relative",zIndex:1}} className="desk-ctas">
+          <a href={BROWSER_DOWNLOAD_URL} className="btn-ice" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",textDecoration:"none"}}>
+            <Download size={13}/> Browser (macOS)
+          </a>
           <button onClick={()=>go(3)} className="btn-ice" style={{fontSize:".72rem",padding:"6px 14px"}}>Scanner</button>
           <button onClick={()=>go(7)} className="btn-solid" style={{fontSize:".72rem",padding:"6px 14px",color:"#000"}}>Get Access</button>
         </div>
@@ -65,7 +70,10 @@ export default function Navbar({curPage,goPage}:Props){
           {NAV.map(n=>(
             <button key={n.page} onClick={()=>go(n.page)} style={{fontFamily:"var(--font-inter)",fontSize:".9rem",color:curPage===n.page?"#00d4ff":"var(--muted)",padding:"11px 14px",borderRadius:"8px",textAlign:"left",background:curPage===n.page?"rgba(0,212,255,.09)":"none",border:"none",cursor:"pointer",transition:"all .18s",position:"relative",zIndex:1}}>{n.label}</button>
           ))}
-          <div style={{display:"flex",gap:"8px",paddingTop:"12px",borderTop:"1px solid rgba(255,255,255,.07)",marginTop:"6px"}}>
+          <a href={BROWSER_DOWNLOAD_URL} className="btn-ice" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"12px",textDecoration:"none"}}>
+            <Download size={15}/> Download Browser (macOS)
+          </a>
+          <div style={{display:"flex",gap:"8px",paddingTop:"10px",borderTop:"1px solid rgba(255,255,255,.07)",marginTop:"10px"}}>
             <button onClick={()=>go(3)} className="btn-ice" style={{flex:1,fontSize:".8rem",padding:"10px"}}>Scanner</button>
             <button onClick={()=>go(7)} className="btn-solid" style={{flex:1,fontSize:".8rem",padding:"10px",color:"#000"}}>Get Access</button>
           </div>

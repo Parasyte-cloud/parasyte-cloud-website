@@ -32,6 +32,10 @@ export default function ParaPinPage({id,contentH,isMobile}:Props){
               </div>
             ))}
           </div>
+          <a href="https://chat.parasyte.cloud" target="_blank" rel="noopener noreferrer" className="lg-ice" style={{marginTop:"18px",display:"inline-flex",alignItems:"center",gap:"8px",padding:"11px 18px",borderRadius:"12px",textDecoration:"none",fontFamily:"var(--font-inter)",fontSize:".82rem",fontWeight:600,color:"#00d4ff",position:"relative",zIndex:1}}>
+            Open PArA PIN <span style={{fontSize:"1rem"}}>&rarr;</span>
+          </a>
+          <div style={{fontFamily:"var(--font-inter)",fontSize:".67rem",color:"var(--dim)",marginTop:"7px"}}>Runs at chat.parasyte.cloud &mdash; install it to your home screen for the full app experience.</div>
         </div>
         {/* Glass phone mockup */}
         <div style={{display:"flex",justifyContent:"center"}}>

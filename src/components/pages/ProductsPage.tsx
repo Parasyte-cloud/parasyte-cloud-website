@@ -3,10 +3,10 @@ const CX:Record<string,string>={ice:"lg-ice",fire:"lg-fire",amber:"lg-amber"};
 const CC:Record<string,string>={ice:"#00d4ff",fire:"#ff6a00",amber:"#ffb800"};
 
 export default function ProductsPage({id,contentH,isMobile}:Props){
-  const cards=[
+  const cards:{icon:string;name:string;tag:string;v:string;desc:string;feats:string[];link?:string}[]=[
     {icon:"\u{1F6E1}",name:"EDR Agent",tag:"Endpoint Detection",v:"ice",desc:"Hardware-bound agent for Win, Mac, Linux, Chrome. Real-time WebSocket alerts.",feats:["Hardware fingerprint device identity","USB blocking with approval workflows","Process & file execution alerts"]},
     {icon:"\u{1F5A5}",name:"RMM Platform",tag:"Remote Management",v:"fire",desc:"Full fleet visibility. Three-tier: endpoint → org admin → master.",feats:["Live device status across all orgs","Remote policy push & enforcement","Multi-org master dashboard"]},
-    {icon:"\u{1F510}",name:"Secure Comms",tag:"PArA PIN",v:"amber",desc:"Hardware-bound 7-digit PIN replaces your phone number as the access key.",feats:["Hardware-bound device identifier","PIN-gated contact access","Disappearing messages over mTLS"]},
+    {icon:"\u{1F510}",name:"Secure Comms",tag:"PArA PIN",v:"amber",desc:"Hardware-bound 7-digit PIN replaces your phone number as the access key.",feats:["Hardware-bound device identifier","PIN-gated contact access","Disappearing messages over mTLS"],link:"https://chat.parasyte.cloud"},
     {icon:"\u{2601}",name:"AWS Scanner",tag:"Cloud Security",v:"ice",desc:"Serverless Step Functions scanner. Daily Telegram reports on AWS security.",feats:["Dangerous port & public S3/RDS detection","Cost leaks: EIPs, NAT GWs, EBS","CDK-deployed, EventBridge cron"]},
     {icon:"\u{1F4CA}",name:"DevOps Monitor",tag:"Observability",v:"fire",desc:"Full-stack observability on Prometheus, Grafana, and Loki.",feats:["Prometheus + Grafana dashboards","Falco runtime security monitoring","ArgoCD GitOps deploy tracking"]},
     {icon:"\u{1F512}",name:"DLP Engine",tag:"Data Protection",v:"amber",desc:"Endpoint-level data policies. Prevent USB exfiltration and transfers.",feats:["USB write blocking & approval gates","Sensitive file extension enforcement","Full forensic audit log"]},
@@ -34,6 +34,11 @@ export default function ProductsPage({id,contentH,isMobile}:Props){
                 </li>
               ))}
             </ul>
+            {c.link && (
+              <a href={c.link} target="_blank" rel="noopener noreferrer" style={{marginTop:"10px",display:"inline-flex",alignItems:"center",gap:"5px",fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".08em",textTransform:"uppercase",color:CC[c.v],textDecoration:"none",position:"relative",zIndex:1}}>
+                Open app &rarr;
+              </a>
+            )}
           </div>
         ))}
       </div>

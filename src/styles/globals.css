@@ -37,12 +37,12 @@ body {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  /* Rich layered background — this shows THROUGH the glass */
+  /* Rich layered background - this shows THROUGH the glass */
   background-color: #060a12;
   background-image:
-    /* Large soft ice bloom — top left */
+    /* Large soft ice bloom - top left */
     radial-gradient(ellipse 70% 60% at 15% 20%,  rgba(0,180,255,0.18)  0%, transparent 60%),
-    /* Large fire bloom — bottom right */
+    /* Large fire bloom - bottom right */
     radial-gradient(ellipse 65% 55% at 88% 85%,  rgba(255,100,0,0.16)  0%, transparent 58%),
     /* Amber midpoint */
     radial-gradient(ellipse 40% 40% at 60% 55%,  rgba(255,180,0,0.07)  0%, transparent 55%),
@@ -59,7 +59,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;outline:no
 
 /* ═══════════════════════════════════════
    LIQUID GLASS SYSTEM
-   — matches the RideArrivo reference:
+   - matches the RideArrivo reference:
      frosted panel, edge highlight,
      shine gradient, depth shadow
 ═══════════════════════════════════════ */
@@ -78,7 +78,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;outline:no
   position: relative;
   overflow: hidden;
 }
-/* Shine sweep — top-left corner light catch */
+/* Shine sweep - top-left corner light catch */
 .lg::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -91,7 +91,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;outline:no
   pointer-events: none; z-index: 0;
 }
 
-/* Prismatic top edge — ice→white→fire on hover */
+/* Prismatic top edge - ice→white→fire on hover */
 .lg-prism {
   position: relative;
   overflow: hidden;
@@ -166,7 +166,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;outline:no
   pointer-events:none; z-index:0;
 }
 
-/* Dark glass — nav/footer (heavier blur, darker) */
+/* Dark glass - nav/footer (heavier blur, darker) */
 .lg-dark {
   background:    rgba(6,10,18,0.60);
   backdrop-filter:         blur(40px) saturate(160%);

@@ -30,7 +30,7 @@ export default function ProductsPage({id,contentH,isMobile}:Props){
             <ul style={{display:"flex",flexDirection:"column",gap:"5px",position:"relative",zIndex:1}}>
               {c.feats.map(f=>(
                 <li key={f} style={{fontFamily:"var(--font-inter)",fontSize:".67rem",color:"var(--dim)",display:"flex",alignItems:"flex-start",gap:"6px"}}>
-                  <span style={{color:CC[c.v],flexShrink:0,fontSize:".6rem",marginTop:"1px"}}>\u2192</span>{f}
+                  <span style={{color:CC[c.v],flexShrink:0,fontSize:".6rem",marginTop:"1px"}}>→</span>{f}
                 </li>
               ))}
             </ul>

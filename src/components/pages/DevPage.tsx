@@ -19,9 +19,9 @@ export default function DevPage({id,contentH,goPage,isMobile}:Props){
         <div>
           <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#ff6a00",marginBottom:"6px",display:"flex",alignItems:"center",gap:"8px"}}>Development Services<span style={{width:"28px",height:"1px",background:"#ff6a00",opacity:.5,display:"block"}}/></div>
           <h2 style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(1.5rem,3vw,2.2rem)",fontWeight:700,color:"var(--text)",marginBottom:"3px"}}>We build what you need.</h2>
-          <p style={{fontFamily:"var(--font-inter)",fontSize:".82rem",color:"var(--muted)"}}>Apps, websites, APIs, infrastructure — end-to-end delivery from the team behind PArAsYtE.</p>
+          <p style={{fontFamily:"var(--font-inter)",fontSize:".82rem",color:"var(--muted)"}}>Apps, websites, APIs, infrastructure: end-to-end delivery from the team behind PArAsYtE.</p>
         </div>
-        <button onClick={()=>goPage(7)} className="btn-fire" style={{fontSize:".82rem",flexShrink:0}}>Start a Project \u2192</button>
+        <button onClick={()=>goPage(7)} className="btn-fire" style={{fontSize:".82rem",flexShrink:0}}>Start a Project →</button>
       </div>
       <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(3,1fr)",gap:"12px",position:"relative",zIndex:1,flex:1,minHeight:0,overflowY:isMobile?"auto":"hidden"}}>
         {services.map(s=>(
@@ -33,7 +33,7 @@ export default function DevPage({id,contentH,goPage,isMobile}:Props){
             <ul style={{display:"flex",flexDirection:"column",gap:"5px",position:"relative",zIndex:1}}>
               {s.feats.map(f=>(
                 <li key={f} style={{fontFamily:"var(--font-inter)",fontSize:".67rem",color:"var(--dim)",display:"flex",alignItems:"flex-start",gap:"6px"}}>
-                  <span style={{color:CC[s.v],flexShrink:0,fontSize:".6rem",marginTop:"1px"}}>\u2192</span>{f}
+                  <span style={{color:CC[s.v],flexShrink:0,fontSize:".6rem",marginTop:"1px"}}>→</span>{f}
                 </li>
               ))}
             </ul>

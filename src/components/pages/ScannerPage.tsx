@@ -18,7 +18,7 @@ export default function ScannerPage({id,contentH,isMobile}:Props){
   const[progress,setProgress]=useState(0);
   const[progLabel,setProgLabel]=useState("");
   const[lines,setLines]=useState<[string,LC][]>([
-    ["[ PArAsYtE Scanner v2.1 — Passive Recon Engine ]","ice"],
+    ["[ PArAsYtE Scanner v2.1 - Passive Recon Engine ]","ice"],
     ["─".repeat(44),"d"],["Enter a target and press Scan.","d"],[" ","d"],
     ["Supported: IP · Domain · ASN · AWS account ID","d"],["⚡ All scans are passive","amber"],
   ]);
@@ -44,12 +44,12 @@ export default function ScannerPage({id,contentH,isMobile}:Props){
       {d:400,l:"Connecting",lines:[[`» Account: ${t}`,"w"],["  IAM → ✓ Assumed","g"],["  Region → us-east-1","ice"]] as [string,LC][]},
       {d:600,l:"Security",lines:[["» Security Groups:","w"],[rn(0,1)?"  ⚠ Port 22 open":"  ✓ No dangerous ports","g"]] as [string,LC][]},
       {d:500,l:"Cost",lines:[["» Cost Explorer:","w"],[`  Spend → $${rn(50,800)}.${rn(10,99)}/mo`,"ice"],[`  EIPs → ${rn(0,3)} unattached`,"amber"]] as [string,LC][]},
-      {d:200,l:"Done",lines:[["─".repeat(44),"d"],[`✓ Complete — ${t}`,"g"]] as [string,LC][]},
+      {d:200,l:"Done",lines:[["─".repeat(44),"d"],[`✓ Complete - ${t}`,"g"]] as [string,LC][]},
     ]:[
       {d:350,l:"Resolve",lines:(type==="ip"?[[`» Geo: ${t}`,"w"],[`  Country → ${country}`,"ice"],[`  ISP → ${isp}`,"ice"],[`  ASN → ${asn}`,"ice"]]:[[`» DNS: ${t}`,"w"],[`  A → ${ip}`,"g"],["  NS → ns1.cloudflare.com","ice"]]) as [string,LC][]},
-      {d:450,l:"Ports",lines:([[`» Ports on ${ip}:`,"w"],...ports.map((p):[string,LC]=>[`  ✓ ${p}`,"g"]),["  ✗ 3306 — filtered","d"]] as [string,LC][])},
+      {d:450,l:"Ports",lines:([[`» Ports on ${ip}:`,"w"],...ports.map((p):[string,LC]=>[`  ✓ ${p}`,"g"]),["  ✗ 3306 - filtered","d"]] as [string,LC][])},
       {d:500,l:"Threat",lines:([["» Threat feeds:","w"],[`  Score → ${score}/100 (${label})`,score<20?"g":score<60?"amber":"fire"],[`  AbuseIPDB → ${score>30?rn(1,5)+" reports":"Clean"}`,"ice"]] as [string,LC][])},
-      {d:150,l:"Done",lines:([["─".repeat(44),"d"],[`✓ Complete — ${t}`,"g"],[`  ${country} | ${isp}`,"d"]] as [string,LC][])},
+      {d:150,l:"Done",lines:([["─".repeat(44),"d"],[`✓ Complete - ${t}`,"g"],[`  ${country} | ${isp}`,"d"]] as [string,LC][])},
     ];
     for(let i=0;i<steps.length;i++){await dl(steps[i].d);setProgress(Math.round((i+1)/steps.length*100));setProgLabel(steps[i].l);append(steps[i].lines);}
     setResult({score,label,cls,isp,country,ports:ports.join(", ")||"None"});setProgress(0);setScanning(false);

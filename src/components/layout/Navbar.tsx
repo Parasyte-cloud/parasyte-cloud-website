@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Menu, X, Download, Info } from "lucide-react";
+import { Menu, X, Download, Info, Car } from "lucide-react";
 
 const NAV=[
   {label:"Home",page:0},{label:"Products",page:1},{label:"Development",page:2},
@@ -8,7 +8,8 @@ const NAV=[
   {label:"Infra",page:6},{label:"Contact",page:7},
 ];
 const BROWSER_DOWNLOAD_URL = "https://github.com/Parasyte-cloud/gatehouse/releases/download/v0.1.0-desktop/PArAsYtE.Browser-0.1.0-arm64.dmg";
-const ROOM7_DESCRIPTION = "Room 7 is RideArrivo's white-label virtual event room for investor calls, town halls, and product launches \u2014 invitation- or passcode-gated, for guests outside the company. Built and run by RideArrivo, a separate company in the portfolio, not a Parasyte Cloud product. It only opens with a specific event link, so there's no general app to open here.";
+const ROOM7_DESCRIPTION = "Room 7 is a white-label virtual event room inside RideArrivo's internal workspace, used for investor calls, town halls, and product launches - invitation- or passcode-gated, for guests outside the company. Built by Parasyte as part of RideArrivo's platform. It only opens with a specific event link, so there's no general app to open here.";
+const RIDEARRIVO_URL = "https://ridearrivo.com";
 
 interface Props{curPage:number;goPage:(n:number)=>void}
 
@@ -68,6 +69,9 @@ export default function Navbar({curPage,goPage}:Props){
               </div>
             )}
           </div>
+          <a href={RIDEARRIVO_URL} target="_blank" rel="noopener noreferrer" className="lg" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",color:"var(--muted)",cursor:"pointer",border:"none",textDecoration:"none"}}>
+            <Car size={13}/> RideArrivo
+          </a>
           <button onClick={()=>go(3)} className="btn-ice" style={{fontSize:".72rem",padding:"6px 14px"}}>Scanner</button>
           <button onClick={()=>go(7)} className="btn-solid" style={{fontSize:".72rem",padding:"6px 14px",color:"#000"}}>Get Access</button>
         </div>
@@ -93,6 +97,9 @@ export default function Navbar({curPage,goPage}:Props){
               {ROOM7_DESCRIPTION}
             </div>
           )}
+          <a href={RIDEARRIVO_URL} target="_blank" rel="noopener noreferrer" className="lg" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"8px",color:"var(--muted)",border:"none",cursor:"pointer",textDecoration:"none"}}>
+            <Car size={15}/> RideArrivo
+          </a>
           <div style={{display:"flex",gap:"8px",paddingTop:"10px",borderTop:"1px solid rgba(255,255,255,.07)",marginTop:"10px"}}>
             <button onClick={()=>go(3)} className="btn-ice" style={{flex:1,fontSize:".8rem",padding:"10px"}}>Scanner</button>
             <button onClick={()=>go(7)} className="btn-solid" style={{flex:1,fontSize:".8rem",padding:"10px",color:"#000"}}>Get Access</button>

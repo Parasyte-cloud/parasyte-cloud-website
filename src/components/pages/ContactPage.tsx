@@ -28,7 +28,7 @@ export default function ContactPage({id,contentH,goPage,isMobile}:Props){
             ))}
           </div>
         </div>
-        {/* Right — big glass CTA card */}
+        {/* Right - big glass CTA card */}
         <div className="lg lg-prism" style={{borderRadius:"22px",padding:isMobile?"24px":"clamp(28px,4vh,44px) clamp(28px,3vw,40px)",position:"relative",overflow:"hidden",boxShadow:"0 2px 0 rgba(255,255,255,.14) inset, 0 40px 100px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.10)"}}>
           {/* Subtle colour wash inside card */}
           <div style={{position:"absolute",top:0,left:0,right:0,height:"50%",background:"linear-gradient(180deg,rgba(0,212,255,.04),transparent)",pointerEvents:"none"}}/>

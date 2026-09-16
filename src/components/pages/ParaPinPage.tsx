@@ -1,7 +1,7 @@
 interface Props{id:string;contentH:string;isMobile:boolean}
 export default function ParaPinPage({id,contentH,isMobile}:Props){
   const msgs=[
-    {side:"them",text:"Hey — sending you my PIN",time:"09:41"},
+    {side:"them",text:"Hey, sending you my PIN",time:"09:41"},
     {side:"me",text:"Got it. Added.",time:"09:42"},
     {side:"them",text:"Nobody else has this",time:"09:42"},
     {side:"me",text:"That's the point 🔒",time:"09:43"},

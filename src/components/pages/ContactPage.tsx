@@ -1,3 +1,4 @@
+import { PAGE_INDEX } from "@/lib/pages";
 interface Props{id:string;contentH:string;goPage:(n:number)=>void;isMobile:boolean}
 export default function ContactPage({id,contentH,goPage,isMobile}:Props){
   return(
@@ -11,14 +12,14 @@ export default function ContactPage({id,contentH,goPage,isMobile}:Props){
       <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:isMobile?"32px":"clamp(28px,5vw,80px)",alignItems:"center",height:isMobile?"auto":"100%",position:"relative",zIndex:1}}>
         {/* Left info */}
         <div>
-          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#00d4ff",marginBottom:"8px",display:"flex",alignItems:"center",gap:"8px"}}>Get Access<span style={{display:"block",width:"28px",height:"1px",background:"#00d4ff",opacity:.5}}/></div>
+          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#00d4ff",marginBottom:"8px",display:"flex",alignItems:"center",gap:"8px"}}>Get Access</div>
           <h2 style={{fontFamily:"var(--font-rajdhani)",fontSize:isMobile?"2rem":"clamp(1.8rem,3.5vw,2.8rem)",fontWeight:700,color:"var(--text)",marginBottom:"10px",lineHeight:1.05}}>Work with<br/>PArAsYtE cloud</h2>
           <p style={{fontFamily:"var(--font-inter)",fontSize:".84rem",color:"var(--muted)",lineHeight:1.65,marginBottom:"28px",maxWidth:"400px"}}>Currently in private access. We&apos;re onboarding select organizations for the EDR + RMM + DLP platform.</p>
           <div style={{display:"flex",flexDirection:"column",gap:"20px"}}>
             {[
               {l:"Status",v:"Private Access",s:"Limited early access for qualifying organizations"},
               {l:"Platform",v:"EDR · RMM · DLP · AWS Scanner",s:"Self-hosted, hardware-bound, bare-metal Kubernetes"},
-              {l:"Built by",v:"Biola Lawal",s:"parasyte.cloud · Lagos, Nigeria"},
+              {l:"Built by",v:"PArAsYtE cloud",s:"Independent security and infrastructure engineering"},
             ].map(m=>(
               <div key={m.l}>
                 <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".58rem",letterSpacing:".2em",textTransform:"uppercase",color:"var(--dim)",marginBottom:"3px"}}>{m.l}</div>
@@ -38,10 +39,10 @@ export default function ContactPage({id,contentH,goPage,isMobile}:Props){
             onMouseLeave={e=>{const a=e.currentTarget as HTMLAnchorElement;a.style.color="#00d4ff";a.style.textShadow="0 0 14px rgba(0,212,255,.4)"}}>
             infra@parasyte.cloud
           </a>
-          <p style={{fontFamily:"var(--font-inter)",fontSize:".82rem",color:"var(--muted)",lineHeight:1.65,marginBottom:"24px",position:"relative",zIndex:1}}>For enterprise deployments, security assessments, or early access. We respond within 24 hours.</p>
+          <p style={{fontFamily:"var(--font-inter)",fontSize:".82rem",color:"var(--muted)",lineHeight:1.65,marginBottom:"24px",position:"relative",zIndex:1}}>For enterprise deployments, security assessments, early access, browser releases or mobile beta enquiries.</p>
           <div style={{display:"flex",gap:"10px",flexWrap:"wrap",marginBottom:"22px",position:"relative",zIndex:1}}>
             <a href="mailto:infra@parasyte.cloud" className="btn-solid" style={{fontSize:".88rem",color:"#000",textDecoration:"none"}}>Request Access</a>
-            <button onClick={()=>goPage(3)} className="btn-fire" style={{fontSize:".88rem"}}>Try Scanner</button>
+            <button onClick={()=>goPage(PAGE_INDEX.scanner)} className="btn-fire" style={{fontSize:".88rem"}}>Try Scanner</button>
           </div>
           <div style={{paddingTop:"18px",borderTop:"1px solid rgba(255,255,255,.08)",position:"relative",zIndex:1}}>
             <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".58rem",color:"var(--dim)",letterSpacing:".2em",textTransform:"uppercase",marginBottom:"10px"}}>Also available</div>

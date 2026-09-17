@@ -1,56 +1,79 @@
 "use client";
-import{useEffect,useState}from"react";
-export default function BookIntro(){
-  const[phase,setPhase]=useState<"waiting"|"opening"|"done">("waiting");
-  const[isMobile,setIsMobile]=useState(false);
-  useEffect(()=>{
-    const mob=window.innerWidth<=768;
-    setIsMobile(mob);
-    if(mob){
-      const t1=setTimeout(()=>setPhase("opening"),400);
-      const t2=setTimeout(()=>setPhase("done"),1400);
-      return()=>{clearTimeout(t1);clearTimeout(t2)};
-    }else{
-      const t1=setTimeout(()=>setPhase("opening"),700);
-      const t2=setTimeout(()=>setPhase("done"),2300);
-      return()=>{clearTimeout(t1);clearTimeout(t2)};
+
+import { useEffect, useState } from "react";
+
+const INTRO_KEY = "parasyte-intro-seen";
+
+export default function BookIntro() {
+  const [phase, setPhase] = useState<"waiting" | "opening" | "done">("waiting");
+
+  useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 768px)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let shouldSkip = reducedMotion;
+    try {
+      shouldSkip = shouldSkip || window.sessionStorage.getItem(INTRO_KEY) === "1";
+    } catch {
+      // Session storage may be unavailable in strict privacy modes; the intro can still run safely.
     }
-  },[]);
-  if(phase==="done")return null;
-  const isOpen=phase==="opening";
-  if(isMobile)return(
-    <div style={{position:"fixed",inset:0,zIndex:9999,display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column",gap:"8px",background:"#060a12",opacity:isOpen?0:1,transition:"opacity .6s ease",pointerEvents:isOpen?"none":"all"}}>
-      <div style={{fontFamily:"var(--font-rajdhani)",fontSize:"3rem",fontWeight:700,letterSpacing:".04em",lineHeight:1}}>
-        <span style={{color:"#00d4ff",filter:"drop-shadow(0 0 16px rgba(0,212,255,.6))"}}>P</span><span style={{color:"#fff"}}>Ar</span><span style={{color:"#ff6a00",filter:"drop-shadow(0 0 16px rgba(255,106,0,.6))"}}>A</span><span style={{color:"#fff"}}>sYt</span><span style={{color:"#ff6a00"}}>E</span>
+
+    if (shouldSkip) {
+      // Schedule the state transition instead of setting state synchronously inside the effect.
+      const skipTimer = window.setTimeout(() => setPhase("done"), 0);
+      return () => window.clearTimeout(skipTimer);
+    }
+
+    const openingDelay = mobile ? 260 : 520;
+    const doneDelay = mobile ? 1000 : 1900;
+    const openTimer = window.setTimeout(() => setPhase("opening"), openingDelay);
+    const doneTimer = window.setTimeout(() => {
+      setPhase("done");
+      try {
+        window.sessionStorage.setItem(INTRO_KEY, "1");
+      } catch {
+        // Non-essential preference only.
+      }
+    }, doneDelay);
+
+    return () => {
+      window.clearTimeout(openTimer);
+      window.clearTimeout(doneTimer);
+    };
+  }, []);
+
+  if (phase === "done") return null;
+  const isOpen = phase === "opening";
+
+  return (
+    <>
+      <div className={`intro-mobile ${isOpen ? "intro-opening" : ""}`} aria-hidden="true">
+        <div className="intro-mark">
+          <span className="brand-ice">P</span><span>Ar</span><span className="brand-fire">A</span><span>sYt</span><span className="brand-fire">E</span>
+        </div>
+        <div className="intro-cloud">cloud</div>
       </div>
-      <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".65rem",color:"var(--dim)",letterSpacing:".3em",textTransform:"uppercase"}}>cloud</div>
-    </div>
-  );
-  return(
-    <div style={{position:"fixed",inset:0,zIndex:9999,display:"flex",alignItems:"center",justifyContent:"center",background:"#060a12",opacity:isOpen?0:1,transition:"opacity .5s ease 1.3s",pointerEvents:isOpen?"none":"all"}}>
-      {/* Left curtain */}
-      <div style={{position:"absolute",top:0,left:0,width:"50%",height:"100%",display:"flex",alignItems:"center",justifyContent:"flex-end",paddingRight:"8vw",background:"linear-gradient(120deg,#020408,#060e1a)",borderRight:"1px solid rgba(0,212,255,0.15)",transformOrigin:"left center",transform:isOpen?"rotateY(-100deg) translateX(-6%)":"none",transition:"transform 1.3s cubic-bezier(.77,0,.175,1)",overflow:"hidden"}}>
-        <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 80% 60% at 100% 50%,rgba(0,212,255,.09),transparent 65%)"}}/>
-        <div style={{position:"relative",textAlign:"right"}}>
-          <div style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(1.4rem,3.5vw,2.8rem)",fontWeight:700,letterSpacing:".12em",textTransform:"uppercase",color:"#00d4ff",textShadow:"0 0 30px rgba(0,212,255,.5)",lineHeight:1.1}}>Security<br/>Intelligence</div>
-          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".68rem",color:"var(--dim)",letterSpacing:".22em",textTransform:"uppercase",marginTop:"8px"}}>EDR · RMM · DLP</div>
+
+      <div className={`intro-desktop ${isOpen ? "intro-opening" : ""}`} aria-hidden="true">
+        <div className="intro-curtain intro-curtain-left">
+          <div className="intro-curtain-copy intro-copy-left">
+            <strong>Security<br />Intelligence</strong>
+            <small>EDR · RMM · DLP</small>
+          </div>
+        </div>
+        <div className="intro-spine">
+          <div className="intro-mark">
+            <span className="brand-ice">P</span><span>Ar</span><span className="brand-fire">A</span><span>sYt</span><span className="brand-fire">E</span>
+          </div>
+          <div className="intro-cloud">cloud</div>
+        </div>
+        <div className="intro-curtain intro-curtain-right">
+          <div className="intro-curtain-copy intro-copy-right">
+            <strong>Control<br />Visibility</strong>
+            <small>Secure Comms · DevOps</small>
+          </div>
         </div>
       </div>
-      {/* Spine */}
-      <div style={{position:"absolute",zIndex:10,textAlign:"center",pointerEvents:"none",opacity:isOpen?0:1,transition:"opacity .2s ease"}}>
-        <div style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(2rem,4vw,3.5rem)",fontWeight:700,letterSpacing:".04em",lineHeight:1}}>
-          <span style={{color:"#00d4ff",filter:"drop-shadow(0 0 16px rgba(0,212,255,.6))"}}>P</span><span style={{color:"#fff"}}>Ar</span><span style={{color:"#ff6a00",filter:"drop-shadow(0 0 16px rgba(255,106,0,.6))"}}>A</span><span style={{color:"#fff"}}>sYt</span><span style={{color:"#ff6a00"}}>E</span>
-        </div>
-        <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".65rem",color:"var(--dim)",letterSpacing:".25em",marginTop:"6px"}}>cloud</div>
-      </div>
-      {/* Right curtain */}
-      <div style={{position:"absolute",top:0,right:0,width:"50%",height:"100%",display:"flex",alignItems:"center",justifyContent:"flex-start",paddingLeft:"8vw",background:"linear-gradient(240deg,#020408,#120803)",borderLeft:"1px solid rgba(255,106,0,0.15)",transformOrigin:"right center",transform:isOpen?"rotateY(100deg) translateX(6%)":"none",transition:"transform 1.3s cubic-bezier(.77,0,.175,1)",overflow:"hidden"}}>
-        <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 80% 60% at 0% 50%,rgba(255,106,0,.09),transparent 65%)"}}/>
-        <div style={{position:"relative"}}>
-          <div style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(1.4rem,3.5vw,2.8rem)",fontWeight:700,letterSpacing:".12em",textTransform:"uppercase",color:"#ff6a00",textShadow:"0 0 30px rgba(255,106,0,.5)",lineHeight:1.1}}>Control<br/>Visibility</div>
-          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".68rem",color:"var(--dim)",letterSpacing:".22em",textTransform:"uppercase",marginTop:"8px"}}>Secure Comms · DevOps</div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }

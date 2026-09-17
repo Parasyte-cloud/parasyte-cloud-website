@@ -1,4 +1,5 @@
 "use client";
+import { PAGE_INDEX } from "@/lib/pages";
 interface Props{id:string;contentH:string;goPage:(n:number)=>void;isMobile:boolean}
 export default function HeroPage({id,contentH,goPage,isMobile}:Props){
   const stats=[
@@ -23,7 +24,7 @@ export default function HeroPage({id,contentH,goPage,isMobile}:Props){
           <div>
             <div style={{display:"inline-flex",alignItems:"center",gap:"8px",fontFamily:"var(--font-jetbrains)",fontSize:".6rem",letterSpacing:".2em",textTransform:"uppercase",color:"var(--muted)",marginBottom:"18px"}}>
               <span className="pulse" style={{width:"5px",height:"5px",borderRadius:"50%",background:"#00d4ff",flexShrink:0,display:"block"}}/>
-              Private access · Now available
+              Platform private access · Browser downloads live
             </div>
             <h1 style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(2.8rem,14vw,5rem)",fontWeight:700,lineHeight:".95",marginBottom:"6px"}}>
               <span style={{color:"#00d4ff",filter:"drop-shadow(0 0 14px rgba(0,212,255,.5))"}}>P</span><span style={{color:"var(--text)"}}>A</span><span style={{color:"var(--muted)"}}>r</span><span style={{color:"var(--text)"}}>A</span><span style={{color:"var(--muted)"}}>s</span><span style={{color:"#ff6a00",filter:"drop-shadow(0 0 14px rgba(255,106,0,.5))"}}>Y</span><span style={{color:"var(--muted)"}}>t</span><span style={{color:"var(--text)"}}>E</span>
@@ -33,10 +34,11 @@ export default function HeroPage({id,contentH,goPage,isMobile}:Props){
             <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".6rem",letterSpacing:".2em",textTransform:"uppercase",color:"var(--muted)",marginBottom:"22px"}}>
               <span style={{color:"#00d4ff"}}>Security</span>&nbsp;·&nbsp;Intelligence&nbsp;·&nbsp;<span style={{color:"#ff6a00"}}>Control</span>
             </div>
-            <p style={{fontFamily:"var(--font-inter)",fontSize:".9rem",color:"var(--muted)",lineHeight:1.7,marginBottom:"24px"}}>Self-hosted endpoint security combining EDR, RMM, and DLP on bare-metal Kubernetes. No managed cloud. Full ownership.</p>
+            <p style={{fontFamily:"var(--font-inter)",fontSize:".9rem",color:"var(--muted)",lineHeight:1.7,marginBottom:"24px"}}>Security and infrastructure technology spanning endpoint control, secure communications, cloud posture and PArAsYtE Browser. Built for ownership, visibility and explicit trust.</p>
             <div style={{display:"flex",gap:"10px",flexWrap:"wrap"}}>
-              <button onClick={()=>goPage(7)} className="btn-solid" style={{fontSize:".88rem",color:"#000"}}>Request Access</button>
-              <button onClick={()=>goPage(3)} className="btn-fire" style={{fontSize:".88rem"}}>Try Scanner →</button>
+              <button onClick={()=>goPage(PAGE_INDEX.contact)} className="btn-solid" style={{fontSize:".88rem",color:"#000"}}>Request Access</button>
+              <button onClick={()=>goPage(PAGE_INDEX.browser)} className="btn-ice" style={{fontSize:".88rem"}}>Download Browser</button>
+              <button onClick={()=>goPage(PAGE_INDEX.scanner)} className="btn-fire" style={{fontSize:".88rem"}}>Try Scanner →</button>
             </div>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px"}}>
@@ -54,7 +56,7 @@ export default function HeroPage({id,contentH,goPage,isMobile}:Props){
           <div style={{paddingRight:"clamp(24px,4vw,64px)",borderRight:"1px solid rgba(255,255,255,.07)",display:"flex",flexDirection:"column",justifyContent:"center",height:"100%"}}>
             <div style={{display:"inline-flex",alignItems:"center",gap:"8px",fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"var(--muted)",marginBottom:"22px"}}>
               <span className="pulse" style={{width:"5px",height:"5px",borderRadius:"50%",background:"#00d4ff",flexShrink:0,display:"block"}}/>
-              Private access · Now available
+              Platform private access · Browser downloads live
             </div>
             <h1 style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(3.5rem,8vw,7rem)",fontWeight:700,lineHeight:".95",letterSpacing:"-.01em",marginBottom:"6px"}}>
               <span style={{color:"#00d4ff",filter:"drop-shadow(0 0 18px rgba(0,212,255,.55))"}}>P</span><span style={{color:"var(--text)"}}>A</span><span style={{color:"var(--muted)"}}>r</span><span style={{color:"var(--text)"}}>A</span><span style={{color:"var(--muted)"}}>s</span><span style={{color:"#ff6a00",filter:"drop-shadow(0 0 18px rgba(255,106,0,.55))"}}>Y</span><span style={{color:"var(--muted)"}}>t</span><span style={{color:"var(--text)"}}>E</span>
@@ -64,10 +66,11 @@ export default function HeroPage({id,contentH,goPage,isMobile}:Props){
             <div style={{fontFamily:"var(--font-jetbrains)",fontSize:"clamp(.6rem,1.2vw,.78rem)",letterSpacing:".28em",textTransform:"uppercase",color:"var(--muted)",marginBottom:"28px"}}>
               <span style={{color:"#00d4ff"}}>Security</span>&nbsp;·&nbsp;Intelligence&nbsp;·&nbsp;<span style={{color:"#ff6a00"}}>Control</span>
             </div>
-            <p style={{fontFamily:"var(--font-inter)",fontSize:"clamp(.82rem,1.5vw,.92rem)",color:"var(--muted)",lineHeight:1.75,maxWidth:"420px",marginBottom:"28px"}}>Self-hosted endpoint security combining EDR, RMM, and DLP on bare-metal Kubernetes. No managed cloud. Full ownership.</p>
+            <p style={{fontFamily:"var(--font-inter)",fontSize:"clamp(.82rem,1.5vw,.92rem)",color:"var(--muted)",lineHeight:1.75,maxWidth:"420px",marginBottom:"28px"}}>Security and infrastructure technology spanning endpoint control, secure communications, cloud posture and PArAsYtE Browser. Built for ownership, visibility and explicit trust.</p>
             <div style={{display:"flex",gap:"12px",flexWrap:"wrap"}}>
-              <button onClick={()=>goPage(7)} className="btn-solid" style={{fontSize:".88rem",color:"#000"}}>Request Access</button>
-              <button onClick={()=>goPage(3)} className="btn-fire" style={{fontSize:".88rem"}}>Try Scanner →</button>
+              <button onClick={()=>goPage(PAGE_INDEX.contact)} className="btn-solid" style={{fontSize:".88rem",color:"#000"}}>Request Access</button>
+              <button onClick={()=>goPage(PAGE_INDEX.browser)} className="btn-ice" style={{fontSize:".88rem"}}>Download Browser</button>
+              <button onClick={()=>goPage(PAGE_INDEX.scanner)} className="btn-fire" style={{fontSize:".88rem"}}>Try Scanner →</button>
             </div>
           </div>
           <div style={{paddingLeft:"clamp(24px,4vw,64px)",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px"}}>

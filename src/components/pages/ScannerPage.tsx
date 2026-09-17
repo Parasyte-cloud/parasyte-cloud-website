@@ -18,9 +18,9 @@ export default function ScannerPage({id,contentH,isMobile}:Props){
   const[progress,setProgress]=useState(0);
   const[progLabel,setProgLabel]=useState("");
   const[lines,setLines]=useState<[string,LC][]>([
-    ["[ PArAsYtE Scanner v2.1 - Passive Recon Engine ]","ice"],
-    ["─".repeat(44),"d"],["Enter a target and press Scan.","d"],[" ","d"],
-    ["Supported: IP · Domain · ASN · AWS account ID","d"],["⚡ All scans are passive","amber"],
+    ["[ PArAsYtE Scanner - Interactive Preview ]","ice"],
+    ["─".repeat(44),"d"],["Enter a sample target and press Preview.","d"],[" ","d"],
+    ["Supported: IP · Domain · ASN · AWS account ID","d"],["ℹ Demo mode · generated sample data","amber"],
   ]);
   const[result,setResult]=useState<null|{score:number,label:string,cls:string,isp:string,country:string,ports:string}>(null);
   const outRef=useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ export default function ScannerPage({id,contentH,isMobile}:Props){
     const type=dt(t);
     if(type==="unknown"){setLines([["✗ Invalid target.","fire"]]);return;}
     setScanning(true);setResult(null);setProgress(0);
-    setLines([[`[ ${type.toUpperCase()} scan: ${t} ]`,"ice"],["─".repeat(44),"d"]]);
+    setLines([[`[ DEMO ${type.toUpperCase()}: ${t} ]`,"ice"],["─".repeat(44),"d"]]);
     const ip=type==="ip"?t:`104.${rn(1,254)}.${rn(1,254)}.${rn(1,100)}`;
     const cs=["United States","Germany","Netherlands","Singapore","United Kingdom"];
     const is=["Cloudflare Inc","Amazon AWS","Hetzner Online","OVH SAS","DigitalOcean"];
@@ -61,11 +61,11 @@ export default function ScannerPage({id,contentH,isMobile}:Props){
       <div className="dot-grid" style={{position:"absolute",inset:0,pointerEvents:"none"}}/>
       <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1.3fr",gap:isMobile?"28px":"clamp(28px,4vw,60px)",alignItems:"center",height:isMobile?"auto":"100%",position:"relative",zIndex:1}}>
         <div>
-          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#ff6a00",marginBottom:"8px",display:"flex",alignItems:"center",gap:"8px"}}>Live Tool<span style={{display:"block",width:"28px",height:"1px",background:"#ff6a00",opacity:.4}}/></div>
+          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#ff6a00",marginBottom:"8px",display:"flex",alignItems:"center",gap:"8px"}}>Interactive Preview</div>
           <h2 style={{fontFamily:"var(--font-rajdhani)",fontSize:isMobile?"2rem":"clamp(1.8rem,3.5vw,2.8rem)",fontWeight:700,color:"var(--text)",marginBottom:"8px",lineHeight:1.05}}>PArAsYtE<br/>Scanner</h2>
-          <p style={{fontFamily:"var(--font-inter)",fontSize:".84rem",color:"var(--muted)",lineHeight:1.65,marginBottom:isMobile?"12px":"22px"}}>Passive recon for IPs, domains, ASNs and AWS security with cost intelligence.</p>
+          <p style={{fontFamily:"var(--font-inter)",fontSize:".84rem",color:"var(--muted)",lineHeight:1.65,marginBottom:isMobile?"12px":"22px"}}>Preview the PArAsYtE scanner workflow for IP, domain, ASN and AWS security intelligence. This public demo does not perform a live network scan.</p>
           {!isMobile&&<div style={{display:"flex",flexDirection:"column",gap:"14px"}}>
-            {[{ic:"🌐",c:"ice",t:"IP & Domain Intel",d:"Geolocation, ASN, PTR, WHOIS, SSL."},{ic:"⚠️",c:"fire",t:"Threat Reputation",d:"AbuseIPDB, blocklists, VirusTotal."},{ic:"☁️",c:"ice",t:"AWS Security",d:"Dangerous ports, public S3/RDS, IAM."},{ic:"💸",c:"amber",t:"Cost Intelligence",d:"Unattached EIPs, NAT Gateways, EBS."}].map(f=>(
+            {[{ic:"🌐",c:"ice",t:"IP & Domain Intel",d:"Geolocation, ASN, PTR, WHOIS, SSL."},{ic:"⚠️",c:"fire",t:"Threat Intelligence",d:"Reputation, blocklist and threat-feed workflow."},{ic:"☁️",c:"ice",t:"AWS Security",d:"Dangerous ports, public S3/RDS, IAM."},{ic:"💸",c:"amber",t:"Cost Intelligence",d:"Unattached EIPs, NAT Gateways, EBS."}].map(f=>(
               <div key={f.t} style={{display:"flex",gap:"12px",alignItems:"flex-start"}}>
                 <div className={`lg-${f.c}`} style={{width:"30px",height:"30px",borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"14px",flexShrink:0,position:"relative",zIndex:1}}>{f.ic}</div>
                 <div><div style={{fontFamily:"var(--font-inter)",fontSize:".82rem",fontWeight:600,color:"var(--text)",marginBottom:"2px"}}>{f.t}</div><div style={{fontFamily:"var(--font-inter)",fontSize:".72rem",color:"var(--dim)",lineHeight:1.5}}>{f.d}</div></div>
@@ -77,14 +77,15 @@ export default function ScannerPage({id,contentH,isMobile}:Props){
         <div className="lg lg-prism" style={{borderRadius:"18px",overflow:"hidden",boxShadow:"0 2px 0 rgba(255,255,255,.14) inset, 0 32px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.10)"}}>
           <div className="lg-dark" style={{padding:"10px 14px",display:"flex",alignItems:"center",gap:"10px",borderBottom:"1px solid rgba(255,255,255,.08)",borderRadius:0}}>
             <div style={{display:"flex",gap:"5px"}}>{["#ff5f57","#febc2e","#28c840"].map((c,i)=><span key={i} style={{width:"10px",height:"10px",borderRadius:"50%",background:c,display:"block",boxShadow:`0 0 6px ${c}80`}}/>)}</div>
-            <span style={{fontFamily:"var(--font-jetbrains)",fontSize:".65rem",color:"var(--dim)",letterSpacing:".12em",textTransform:"uppercase",margin:"0 auto",position:"relative",zIndex:1}}>PARASYTE SCANNER v2.1</span>
+            <span style={{fontFamily:"var(--font-jetbrains)",fontSize:".65rem",color:"var(--dim)",letterSpacing:".12em",textTransform:"uppercase",margin:"0 auto",position:"relative",zIndex:1}}>PARASYTE SCANNER · DEMO</span>
           </div>
           <div style={{padding:"14px 16px",position:"relative",zIndex:1}}>
             <div style={{display:"flex",gap:"8px",marginBottom:"12px",flexWrap:isMobile?"wrap":"nowrap"}}>
-              <input value={target} onChange={e=>setTarget(e.target.value)} onKeyDown={e=>e.key==="Enter"&&runScan()} placeholder="IP, domain, ASN, or AWS account..." className="lg" style={{flex:1,minWidth:0,borderRadius:"8px",padding:"9px 13px",fontFamily:"var(--font-jetbrains)",fontSize:".74rem",color:"var(--text)",outline:"none",border:"1px solid rgba(255,255,255,.12)"}}/>
-              <button onClick={runScan} disabled={scanning} className="btn-solid" style={{fontSize:".7rem",padding:"9px 16px",whiteSpace:"nowrap",opacity:scanning?.5:1,color:"#000"}}>{scanning?"…":"Scan →"}</button>
+              <input aria-label="Scanner preview target" value={target} onChange={e=>setTarget(e.target.value)} onKeyDown={e=>e.key==="Enter"&&runScan()} placeholder="Sample IP, domain, ASN, or AWS account..." className="lg" style={{flex:1,minWidth:0,borderRadius:"8px",padding:"9px 13px",fontFamily:"var(--font-jetbrains)",fontSize:".74rem",color:"var(--text)",outline:"none",border:"1px solid rgba(255,255,255,.12)"}}/>
+              <button onClick={runScan} disabled={scanning} className="btn-solid" style={{fontSize:".7rem",padding:"9px 16px",whiteSpace:"nowrap",opacity:scanning?.5:1,color:"#000"}}>{scanning?"…":"Preview →"}</button>
             </div>
-            <div ref={outRef} className="term-scroll lg" style={{borderRadius:"10px",padding:"12px",height:isMobile?"140px":"168px",overflowY:"auto",border:"1px solid rgba(255,255,255,.08)"}}>
+            <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".56rem",color:"var(--dim)",margin:"-4px 0 10px",lineHeight:1.5}}>Public preview only. Results are generated locally in your browser and are not authoritative security findings.</div>
+            <div ref={outRef} data-native-scroll="true" role="log" aria-live="polite" aria-label="Scanner preview output" className="term-scroll lg" style={{borderRadius:"10px",padding:"12px",height:isMobile?"140px":"168px",overflowY:"auto",border:"1px solid rgba(255,255,255,.08)"}}>
               {lines.map((l,i)=><div key={i} style={{fontFamily:"var(--font-jetbrains)",fontSize:".7rem",lineHeight:1.65,color:LCM[l[1]]}}>{l[0]}</div>)}
             </div>
             {scanning&&<div style={{marginTop:"10px"}}>
@@ -94,7 +95,7 @@ export default function ScannerPage({id,contentH,isMobile}:Props){
               <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".58rem",color:"var(--dim)"}}>{progLabel}...</div>
             </div>}
             {result&&<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"8px",marginTop:"10px"}}>
-              {[{l:"Threat Score",v:`${result.score}/100 ${result.label}`,c:result.cls},{l:"ISP / Account",v:result.isp,c:"info"},{l:"Country",v:result.country,c:"w"},{l:"Ports",v:result.ports,c:"ice"}].map(r=>(
+              {[{l:"Sample Threat Score",v:`${result.score}/100 ${result.label}`,c:result.cls},{l:"ISP / Account",v:result.isp,c:"info"},{l:"Country",v:result.country,c:"w"},{l:"Ports",v:result.ports,c:"ice"}].map(r=>(
                 <div key={r.l} className="lg" style={{borderRadius:"9px",padding:"9px 11px",position:"relative",zIndex:1}}>
                   <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".55rem",letterSpacing:".14em",textTransform:"uppercase",color:"var(--dim)",marginBottom:"3px",position:"relative",zIndex:1}}>{r.l}</div>
                   <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".78rem",fontWeight:500,color:rc[r.c]||"var(--text)",position:"relative",zIndex:1}}>{r.v}</div>

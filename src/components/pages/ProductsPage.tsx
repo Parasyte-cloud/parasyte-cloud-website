@@ -4,7 +4,7 @@ const CC:Record<string,string>={ice:"#00d4ff",fire:"#ff6a00",amber:"#ffb800"};
 
 export default function ProductsPage({id,contentH,isMobile}:Props){
   const cards:{icon:string;name:string;tag:string;v:string;desc:string;feats:string[];link?:string}[]=[
-    {icon:"\u{1F6E1}",name:"EDR Agent",tag:"Endpoint Detection",v:"ice",desc:"Hardware-bound agent for Win, Mac, Linux, Chrome. Real-time WebSocket alerts.",feats:["Hardware fingerprint device identity","USB blocking with approval workflows","Process & file execution alerts"]},
+    {icon:"\u{1F6E1}",name:"EDR Agent",tag:"Endpoint Detection",v:"ice",desc:"Hardware-bound agent for Win, Mac, Linux, Chrome. Real-time WebSocket alerts.",feats:["Device-bound endpoint identity","USB blocking with approval workflows","Process & file execution alerts"]},
     {icon:"\u{1F5A5}",name:"RMM Platform",tag:"Remote Management",v:"fire",desc:"Full fleet visibility. Three-tier: endpoint → org admin → master.",feats:["Live device status across all orgs","Remote policy push & enforcement","Multi-org master dashboard"]},
     {icon:"\u{1F510}",name:"Secure Comms",tag:"PArA PIN",v:"amber",desc:"Hardware-bound 7-digit PIN replaces your phone number as the access key.",feats:["Hardware-bound device identifier","PIN-gated contact access","Disappearing messages over mTLS"],link:"https://chat.parasyte.cloud"},
     {icon:"\u{2601}",name:"AWS Scanner",tag:"Cloud Security",v:"ice",desc:"Serverless Step Functions scanner. Daily Telegram reports on AWS security.",feats:["Dangerous port & public S3/RDS detection","Cost leaks: EIPs, NAT GWs, EBS","CDK-deployed, EventBridge cron"]},
@@ -16,9 +16,9 @@ export default function ProductsPage({id,contentH,isMobile}:Props){
       <div className="orb-field"><div className="orb orb-ice" style={{animationDelay:"-3s"}}/><div className="orb orb-fire" style={{animationDelay:"-9s"}}/></div>
       <div className="dot-grid" style={{position:"absolute",inset:0,pointerEvents:"none"}}/>
       <div style={{position:"relative",zIndex:1,marginBottom:"clamp(14px,2.2vh,22px)",flexShrink:0}}>
-        <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#00d4ff",marginBottom:"6px",display:"flex",alignItems:"center",gap:"8px"}}>Core Products<span style={{width:"28px",height:"1px",background:"#00d4ff",opacity:.5,display:"block"}}/></div>
-        <h2 style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(1.5rem,3vw,2.2rem)",fontWeight:700,color:"var(--text)",marginBottom:"3px"}}>Six tools. One platform.</h2>
-        <p style={{fontFamily:"var(--font-inter)",fontSize:".82rem",color:"var(--muted)"}}>Self-hosted on your infrastructure. Zero third-party cloud. Full data sovereignty.</p>
+        <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#00d4ff",marginBottom:"6px",display:"flex",alignItems:"center",gap:"8px"}}>Core Products</div>
+        <h2 style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(1.5rem,3vw,2.2rem)",fontWeight:700,color:"var(--text)",marginBottom:"3px"}}>Security tools. One controlled stack.</h2>
+        <p style={{fontFamily:"var(--font-inter)",fontSize:".82rem",color:"var(--muted)"}}>Core control-plane services are designed for self-hosted deployment, with external integrations kept explicit and auditable.</p>
       </div>
       <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(3,1fr)",gap:"12px",position:"relative",zIndex:1,flex:1,minHeight:0,overflowY:isMobile?"auto":"hidden"}}>
         {cards.map(c=>(

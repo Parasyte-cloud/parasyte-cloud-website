@@ -1,3 +1,4 @@
+import { PAGE_INDEX } from "@/lib/pages";
 interface Props{id:string;contentH:string;goPage:(n:number)=>void;isMobile:boolean}
 const CX:Record<string,string>={ice:"lg-ice",fire:"lg-fire",amber:"lg-amber"};
 const CC:Record<string,string>={ice:"#00d4ff",fire:"#ff6a00",amber:"#ffb800"};
@@ -17,11 +18,11 @@ export default function DevPage({id,contentH,goPage,isMobile}:Props){
       <div className="dot-grid" style={{position:"absolute",inset:0,pointerEvents:"none"}}/>
       <div style={{position:"relative",zIndex:1,marginBottom:"clamp(14px,2.2vh,22px)",flexShrink:0,display:"flex",justifyContent:"space-between",alignItems:"flex-end",flexWrap:"wrap",gap:"12px"}}>
         <div>
-          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#ff6a00",marginBottom:"6px",display:"flex",alignItems:"center",gap:"8px"}}>Development Services<span style={{width:"28px",height:"1px",background:"#ff6a00",opacity:.5,display:"block"}}/></div>
+          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#ff6a00",marginBottom:"6px",display:"flex",alignItems:"center",gap:"8px"}}>Development Services</div>
           <h2 style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(1.5rem,3vw,2.2rem)",fontWeight:700,color:"var(--text)",marginBottom:"3px"}}>We build what you need.</h2>
           <p style={{fontFamily:"var(--font-inter)",fontSize:".82rem",color:"var(--muted)"}}>Apps, websites, APIs, infrastructure: end-to-end delivery from the team behind PArAsYtE.</p>
         </div>
-        <button onClick={()=>goPage(7)} className="btn-fire" style={{fontSize:".82rem",flexShrink:0}}>Start a Project →</button>
+        <button onClick={()=>goPage(PAGE_INDEX.contact)} className="btn-fire" style={{fontSize:".82rem",flexShrink:0}}>Start a Project →</button>
       </div>
       <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(3,1fr)",gap:"12px",position:"relative",zIndex:1,flex:1,minHeight:0,overflowY:isMobile?"auto":"hidden"}}>
         {services.map(s=>(

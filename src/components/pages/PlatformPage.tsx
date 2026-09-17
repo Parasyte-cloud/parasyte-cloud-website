@@ -14,7 +14,7 @@ export default function PlatformPage({id,contentH,isMobile}:Props){
       <div className="dot-grid" style={{position:"absolute",inset:0,pointerEvents:"none"}}/>
       <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"220px 1fr",gap:isMobile?"24px":"clamp(20px,4vw,48px)",height:isMobile?"auto":"100%",alignItems:"center",position:"relative",zIndex:1}}>
         <div>
-          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#00d4ff",marginBottom:"8px",display:"flex",alignItems:"center",gap:"8px"}}>Architecture<span style={{display:"block",width:"28px",height:"1px",background:"#00d4ff",opacity:.5}}/></div>
+          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#00d4ff",marginBottom:"8px",display:"flex",alignItems:"center",gap:"8px"}}>Architecture</div>
           <h2 style={{fontFamily:"var(--font-rajdhani)",fontSize:isMobile?"2rem":"clamp(1.6rem,3vw,2.4rem)",fontWeight:700,color:"var(--text)",marginBottom:"10px",lineHeight:1.05}}>Three-Tier<br/>Platform</h2>
           <p style={{fontFamily:"var(--font-inter)",fontSize:".82rem",color:"var(--muted)",lineHeight:1.65}}>Bare-metal to browser. GitOps-managed, mTLS agent comms, real-time WebSocket alerting.</p>
         </div>

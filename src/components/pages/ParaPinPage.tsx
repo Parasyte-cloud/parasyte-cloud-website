@@ -7,9 +7,9 @@ export default function ParaPinPage({id,contentH,isMobile}:Props){
     {side:"me",text:"That's the point 🔒",time:"09:43"},
   ];
   const feats=[
-    {n:"01",t:"Hardware-Bound Identity",d:"Generated from MAC, CPU ID, disk serial. Lives on hardware, not in a database."},
+    {n:"01",t:"Device-Bound Identity",d:"Enrollment binds the identity to an approved device without exposing raw hardware identifiers in the interface."},
     {n:"02",t:"PIN-Gated Access",d:"Phone number grants nothing. Only explicit PIN share grants messaging access."},
-    {n:"03",t:"E2E over mTLS",d:"Same mTLS layer as the EDR fleet. Zero plaintext. Zero metadata leakage."},
+    {n:"03",t:"Mutually Authenticated Transport",d:"mTLS protects service transport and authenticates enrolled clients without relying on a phone number as the contact key."},
   ];
   return(
     <div id={id} style={{height:contentH,minHeight:isMobile?"100svh":undefined,position:"relative",overflow:"hidden",display:"flex",flexDirection:"column",justifyContent:"center",padding:isMobile?"80px 20px 40px":"clamp(24px,4vh,52px) clamp(24px,5vw,72px) clamp(16px,3vh,36px)"}}>
@@ -17,10 +17,10 @@ export default function ParaPinPage({id,contentH,isMobile}:Props){
       <div className="dot-grid" style={{position:"absolute",inset:0,pointerEvents:"none"}}/>
       <div style={{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:isMobile?"32px":"clamp(28px,4vw,64px)",alignItems:"center",height:isMobile?"auto":"100%",position:"relative",zIndex:1}}>
         <div>
-          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#ffb800",marginBottom:"8px",display:"flex",alignItems:"center",gap:"8px"}}>Secure Comms<span style={{display:"block",width:"28px",height:"1px",background:"#ffb800",opacity:.5}}/></div>
+          <div style={{fontFamily:"var(--font-jetbrains)",fontSize:".62rem",letterSpacing:".22em",textTransform:"uppercase",color:"#ffb800",marginBottom:"8px",display:"flex",alignItems:"center",gap:"8px"}}>Secure Comms</div>
           <h2 style={{fontFamily:"var(--font-rajdhani)",fontSize:isMobile?"2rem":"clamp(1.8rem,3.5vw,2.8rem)",fontWeight:700,color:"var(--text)",marginBottom:"10px",lineHeight:1.05}}>PArA PIN</h2>
           <p style={{fontFamily:"var(--font-rajdhani)",fontSize:"clamp(.95rem,1.8vw,1.15rem)",fontStyle:"italic",color:"rgba(0,212,255,.85)",marginBottom:"14px",lineHeight:1.35}}>&quot;Your number is for everyone.<br/>Your PArA PIN is for the ones that matter.&quot;</p>
-          <p style={{fontFamily:"var(--font-inter)",fontSize:".84rem",color:"var(--muted)",lineHeight:1.65,marginBottom:"22px"}}>A 7-digit hardware-bound identifier replaces your phone number as the access key.</p>
+          <p style={{fontFamily:"var(--font-inter)",fontSize:".84rem",color:"var(--muted)",lineHeight:1.65,marginBottom:"22px"}}>A 7-digit device-bound identifier can act as the access key instead of exposing your phone number.</p>
           <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
             {feats.map(f=>(
               <div key={f.n} className="lg lg-prism" style={{display:"flex",gap:"12px",alignItems:"flex-start",borderRadius:"12px",padding:"12px 14px"}}>

@@ -13,13 +13,13 @@ const DOWNLOAD_URLS = {
   linux: "https://github.com/Parasyte-cloud/gatehouse/releases/download/desktop-v0.1.1/PArAsYtE.Browser-0.1.0.AppImage",
 };
 const ROOM7_DESCRIPTION = "Room 7 is a white-label virtual event room inside RideArrivo's internal workspace, used for investor calls, town halls, and product launches - invitation- or passcode-gated, for guests outside the company. Built by Parasyte as part of RideArrivo's platform. It only opens with a specific event link, so there's no general app to open here.";
+const ROOM7_URL = "https://room7.ridearrivo.com/r/WPWVK5XT"; // RideArrivo Official Launch event page - update if RideArrivo issues a new event link
 const RIDEARRIVO_URL = "https://ridearrivo.com";
 
 interface Props{curPage:number;goPage:(n:number)=>void}
 
 export default function Navbar({curPage,goPage}:Props){
   const [open,setOpen]=useState(false);
-  const [roomInfoOpen,setRoomInfoOpen]=useState(false);
   const [downloadOpen,setDownloadOpen]=useState(false);
   const go=(n:number)=>{goPage(n);setOpen(false)};
 
@@ -73,16 +73,9 @@ export default function Navbar({curPage,goPage}:Props){
               </div>
             )}
           </div>
-          <div style={{position:"relative"}}>
-            <button onClick={()=>setRoomInfoOpen(v=>!v)} className="lg" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",color:"var(--muted)",cursor:"pointer",border:"none"}}>
-              <Info size={13}/> Room 7
-            </button>
-            {roomInfoOpen&&(
-              <div className="lg lg-dark" style={{position:"absolute",top:"calc(100% + 8px)",right:0,width:"280px",padding:"14px",borderRadius:"12px",fontFamily:"var(--font-inter)",fontSize:".72rem",lineHeight:1.6,color:"var(--muted)",zIndex:200,boxShadow:"0 20px 50px rgba(0,0,0,.5)"}}>
-                {ROOM7_DESCRIPTION}
-              </div>
-            )}
-          </div>
+          <a href={ROOM7_URL} target="_blank" rel="noopener noreferrer" title={ROOM7_DESCRIPTION} className="lg" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",color:"var(--muted)",cursor:"pointer",border:"none",textDecoration:"none"}}>
+            <Info size={13}/> Room 7
+          </a>
           <a href={RIDEARRIVO_URL} target="_blank" rel="noopener noreferrer" className="lg" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",color:"var(--muted)",cursor:"pointer",border:"none",textDecoration:"none"}}>
             <Car size={13}/> RideArrivo
           </a>
@@ -110,14 +103,12 @@ export default function Navbar({curPage,goPage}:Props){
           <a href={DOWNLOAD_URLS.linux} className="btn-ice" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"6px",textDecoration:"none"}}>
             <Download size={15}/> Linux (.AppImage)
           </a>
-          <button onClick={()=>setRoomInfoOpen(v=>!v)} className="lg" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"8px",color:"var(--muted)",border:"none",cursor:"pointer"}}>
-            <Info size={15}/> What's Room 7?
-          </button>
-          {roomInfoOpen&&(
-            <div style={{fontFamily:"var(--font-inter)",fontSize:".78rem",lineHeight:1.6,color:"var(--muted)",padding:"10px 4px 2px"}}>
-              {ROOM7_DESCRIPTION}
-            </div>
-          )}
+          <a href={ROOM7_URL} target="_blank" rel="noopener noreferrer" className="lg" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"8px",color:"var(--muted)",border:"none",cursor:"pointer",textDecoration:"none"}}>
+            <Info size={15}/> Room 7
+          </a>
+          <div style={{fontFamily:"var(--font-inter)",fontSize:".72rem",lineHeight:1.5,color:"var(--dim)",padding:"6px 4px 2px"}}>
+            {ROOM7_DESCRIPTION}
+          </div>
           <a href={RIDEARRIVO_URL} target="_blank" rel="noopener noreferrer" className="lg" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"8px",color:"var(--muted)",border:"none",cursor:"pointer",textDecoration:"none"}}>
             <Car size={15}/> RideArrivo
           </a>

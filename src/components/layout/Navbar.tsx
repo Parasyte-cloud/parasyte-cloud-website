@@ -7,7 +7,11 @@ const NAV=[
   {label:"Scanner",page:3},{label:"Platform",page:4},{label:"PArA PIN",page:5},
   {label:"Infra",page:6},{label:"Contact",page:7},
 ];
-const BROWSER_DOWNLOAD_URL = "https://github.com/Parasyte-cloud/gatehouse/releases/download/v0.1.0-desktop/PArAsYtE.Browser-0.1.0-arm64.dmg";
+const DOWNLOAD_URLS = {
+  mac: "https://github.com/Parasyte-cloud/gatehouse/releases/download/desktop-v0.1.1/PArAsYtE.Browser-0.1.0-arm64.dmg",
+  win: "https://github.com/Parasyte-cloud/gatehouse/releases/download/desktop-v0.1.1/PArAsYtE.Browser.Setup.0.1.0.exe",
+  linux: "https://github.com/Parasyte-cloud/gatehouse/releases/download/desktop-v0.1.1/PArAsYtE.Browser-0.1.0.AppImage",
+};
 const ROOM7_DESCRIPTION = "Room 7 is a white-label virtual event room inside RideArrivo's internal workspace, used for investor calls, town halls, and product launches - invitation- or passcode-gated, for guests outside the company. Built by Parasyte as part of RideArrivo's platform. It only opens with a specific event link, so there's no general app to open here.";
 const RIDEARRIVO_URL = "https://ridearrivo.com";
 
@@ -16,6 +20,7 @@ interface Props{curPage:number;goPage:(n:number)=>void}
 export default function Navbar({curPage,goPage}:Props){
   const [open,setOpen]=useState(false);
   const [roomInfoOpen,setRoomInfoOpen]=useState(false);
+  const [downloadOpen,setDownloadOpen]=useState(false);
   const go=(n:number)=>{goPage(n);setOpen(false)};
 
   return(
@@ -56,9 +61,18 @@ export default function Navbar({curPage,goPage}:Props){
 
         {/* CTAs */}
         <div style={{display:"flex",gap:"8px",flexShrink:0,position:"relative",zIndex:1}} className="desk-ctas">
-          <a href={BROWSER_DOWNLOAD_URL} className="btn-ice" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",textDecoration:"none"}}>
-            <Download size={13}/> Browser (macOS)
-          </a>
+          <div style={{position:"relative"}}>
+            <button onClick={()=>setDownloadOpen(v=>!v)} className="btn-ice" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",border:"none",cursor:"pointer"}}>
+              <Download size={13}/> Download Browser
+            </button>
+            {downloadOpen&&(
+              <div className="lg lg-dark" style={{position:"absolute",top:"calc(100% + 8px)",right:0,width:"190px",padding:"6px",borderRadius:"12px",zIndex:200,boxShadow:"0 20px 50px rgba(0,0,0,.5)",display:"flex",flexDirection:"column",gap:"2px"}}>
+                <a href={DOWNLOAD_URLS.mac} onClick={()=>setDownloadOpen(false)} className="lg-hover" style={{display:"flex",alignItems:"center",gap:"8px",padding:"9px 10px",borderRadius:"8px",fontFamily:"var(--font-inter)",fontSize:".78rem",color:"var(--muted)",textDecoration:"none"}}>macOS (.dmg)</a>
+                <a href={DOWNLOAD_URLS.win} onClick={()=>setDownloadOpen(false)} className="lg-hover" style={{display:"flex",alignItems:"center",gap:"8px",padding:"9px 10px",borderRadius:"8px",fontFamily:"var(--font-inter)",fontSize:".78rem",color:"var(--muted)",textDecoration:"none"}}>Windows (.exe)</a>
+                <a href={DOWNLOAD_URLS.linux} onClick={()=>setDownloadOpen(false)} className="lg-hover" style={{display:"flex",alignItems:"center",gap:"8px",padding:"9px 10px",borderRadius:"8px",fontFamily:"var(--font-inter)",fontSize:".78rem",color:"var(--muted)",textDecoration:"none"}}>Linux (.AppImage)</a>
+              </div>
+            )}
+          </div>
           <div style={{position:"relative"}}>
             <button onClick={()=>setRoomInfoOpen(v=>!v)} className="lg" style={{fontSize:".72rem",padding:"6px 14px",display:"inline-flex",alignItems:"center",gap:"5px",color:"var(--muted)",cursor:"pointer",border:"none"}}>
               <Info size={13}/> Room 7
@@ -86,8 +100,15 @@ export default function Navbar({curPage,goPage}:Props){
           {NAV.map(n=>(
             <button key={n.page} onClick={()=>go(n.page)} style={{fontFamily:"var(--font-inter)",fontSize:".9rem",color:curPage===n.page?"#00d4ff":"var(--muted)",padding:"11px 14px",borderRadius:"8px",textAlign:"left",background:curPage===n.page?"rgba(0,212,255,.09)":"none",border:"none",cursor:"pointer",transition:"all .18s",position:"relative",zIndex:1}}>{n.label}</button>
           ))}
-          <a href={BROWSER_DOWNLOAD_URL} className="btn-ice" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"12px",textDecoration:"none"}}>
-            <Download size={15}/> Download Browser (macOS)
+          <div style={{fontSize:".7rem",color:"var(--dim)",textTransform:"uppercase",letterSpacing:".04em",padding:"12px 4px 6px"}}>Download Browser</div>
+          <a href={DOWNLOAD_URLS.mac} className="btn-ice" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",textDecoration:"none"}}>
+            <Download size={15}/> macOS (.dmg)
+          </a>
+          <a href={DOWNLOAD_URLS.win} className="btn-ice" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"6px",textDecoration:"none"}}>
+            <Download size={15}/> Windows (.exe)
+          </a>
+          <a href={DOWNLOAD_URLS.linux} className="btn-ice" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"6px",textDecoration:"none"}}>
+            <Download size={15}/> Linux (.AppImage)
           </a>
           <button onClick={()=>setRoomInfoOpen(v=>!v)} className="lg" style={{display:"flex",alignItems:"center",justifyContent:"center",gap:"6px",fontSize:".85rem",padding:"11px",marginTop:"8px",color:"var(--muted)",border:"none",cursor:"pointer"}}>
             <Info size={15}/> What's Room 7?

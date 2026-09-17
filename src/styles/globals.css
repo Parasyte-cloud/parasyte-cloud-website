@@ -618,3 +618,139 @@ button,a{-webkit-tap-highlight-color:transparent}
 .system-card p{font:400 .88rem/1.7 var(--font-inter);color:var(--muted);margin-bottom:22px;max-width:460px}
 .system-actions{display:flex;gap:10px;flex-wrap:wrap}
 .system-action{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:.78rem}
+
+/* ═══════════════════════════════════════
+   DESKTOP DENSITY & FIT PASS
+   Keeps the full visual hierarchy while
+   reducing oversized type/chrome on desktop.
+═══════════════════════════════════════ */
+@media (min-width: 1101px) {
+  html { font-size: 15px; }
+  :root { --nav-h: 50px; --foot-h: 56px; }
+
+  .site-nav {
+    gap: 11px;
+    padding-left: clamp(14px, 2.4vw, 36px);
+    padding-right: clamp(14px, 2.4vw, 36px);
+  }
+
+  .brand-lockup { gap: 3px; padding-block: 5px; }
+  .brand-wordmark { font-size: 1.08rem; letter-spacing: .03em; }
+  .brand-cloud { font-size: .55rem; letter-spacing: .1em; }
+
+  .nav-pill-group { padding: 2px; border-radius: 11px; }
+  .nav-pill {
+    font-size: .62rem;
+    padding: 6px 7px;
+    border-radius: 7px;
+  }
+
+  .nav-actions { gap: 5px; }
+  .nav-action-button {
+    font-size: .60rem !important;
+    padding: 6px 8px !important;
+    gap: 4px;
+    border-radius: 8px;
+  }
+
+  .nav-dropdown {
+    top: calc(100% + 7px);
+    width: 218px;
+    padding: 6px;
+    border-radius: 13px;
+  }
+  .download-dropdown { width: 224px; }
+  .ecosystem-dropdown { width: 204px; }
+  .nav-dropdown-heading {
+    font-size: .49rem;
+    letter-spacing: .15em;
+    padding: 5px 7px 4px;
+  }
+  .nav-dropdown-link {
+    min-height: 36px;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 8px;
+  }
+  .nav-dropdown-link strong { font-size: .67rem; }
+  .nav-dropdown-link small { font-size: .52rem; }
+  .nav-dropdown-divider { margin: 4px 6px; }
+  .mini-chip,
+  .coming-soon-chip {
+    padding: 3px 6px;
+    font-size: .47rem;
+  }
+  .mobile-beta-link {
+    margin: 4px 3px 1px;
+    padding: 7px;
+    border-radius: 8px;
+    font-size: .60rem;
+  }
+
+  .page-indicator { right: 12px; gap: 6px; }
+  .page-dot { width: 4px; height: 4px; }
+  .page-dot-active { height: 16px; }
+
+  .footer-inner {
+    max-width: 1540px;
+    padding: 6px clamp(14px, 2.4vw, 36px);
+    gap: 3px;
+  }
+  .footer-row { gap: 14px; }
+  .footer-brand { font-size: .80rem; }
+  .footer-brand small { font-size: .52rem; }
+  .footer-links { gap: 1px; }
+  .footer-links button,
+  .footer-external a {
+    padding: 2px 4px;
+    font-size: .54rem;
+  }
+  .footer-meta {
+    gap: 9px;
+    font-size: .44rem;
+    letter-spacing: .075em;
+  }
+  .footer-meta span + span::before { margin-right: 9px; }
+
+  .eyebrow {
+    margin-bottom: 7px;
+    font-size: .56rem;
+    letter-spacing: .20em;
+  }
+  .section-title { font-size: clamp(1.85rem, 3.4vw, 2.8rem); }
+  .section-copy { font-size: .78rem; line-height: 1.62; }
+
+  .feature-line { grid-template-columns: 27px 1fr; gap: 9px; }
+  .feature-icon { width: 27px; height: 27px; border-radius: 8px; }
+  .feature-line strong { font-size: .72rem; }
+  .feature-line small { font-size: .62rem; line-height: 1.4; }
+
+  .browser-download-panel {
+    border-radius: 20px;
+    padding: clamp(16px, 2.2vw, 24px);
+  }
+  .browser-download-head { margin-bottom: 13px; }
+  .browser-kicker { font-size: .49rem; }
+  .browser-panel-title { font-size: clamp(1.05rem, 1.7vw, 1.38rem); }
+  .availability-pill { padding: 5px 8px; font-size: .50rem; }
+  .download-card-live { grid-template-columns: 29px 1fr auto; gap: 8px; padding: 9px; }
+  .download-card-icon { width: 27px; height: 27px; border-radius: 8px; }
+  .download-card-body strong { font-size: .69rem; }
+  .download-card-body small { font-size: .52rem; }
+  .download-card-body em { font-size: .52rem; }
+  .mobile-release-row { margin-top: 10px; padding-top: 10px; gap: 10px; }
+  .mobile-release-copy strong { font-size: .69rem; }
+  .mobile-release-copy small { font-size: .55rem; }
+  .download-card-soon { min-height: 42px; padding: 7px 9px; }
+  .download-footnote { margin-top: 9px; font-size: .51rem; }
+}
+
+/* Compact desktop/laptop heights: preserve breathing room without clipping. */
+@media (min-width: 1101px) and (max-height: 820px) {
+  html { font-size: 14.5px; }
+  :root { --nav-h: 48px; --foot-h: 52px; }
+  .site-nav { padding-left: 20px; padding-right: 20px; }
+  .nav-pill { padding-block: 5px; }
+  .nav-action-button { padding-block: 5px !important; }
+  .footer-inner { padding-block: 5px; }
+}

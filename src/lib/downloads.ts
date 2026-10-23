@@ -54,3 +54,5 @@ export const BROWSER_DOWNLOADS: DownloadItem[] = [
 
 export const MOBILE_BETA_MAILTO =
   "mailto:infra@parasyte.cloud?subject=PArAsYtE%20Browser%20mobile%20beta";
+
+export const VEIL_DOWNLOAD_URL = "https://vault.parasyte.cloud/download";

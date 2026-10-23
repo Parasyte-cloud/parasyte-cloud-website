@@ -1,5 +1,7 @@
 "use client";
+import { KeyRound } from "lucide-react";
 import { PAGE_INDEX } from "@/lib/pages";
+import { VEIL_DOWNLOAD_URL } from "@/lib/downloads";
 interface Props{id:string;contentH:string;goPage:(n:number)=>void;isMobile:boolean}
 export default function HeroPage({id,contentH,goPage,isMobile}:Props){
   const stats=[
@@ -39,6 +41,7 @@ export default function HeroPage({id,contentH,goPage,isMobile}:Props){
               <button onClick={()=>goPage(PAGE_INDEX.contact)} className="btn-solid" style={{fontSize:".88rem",color:"#000"}}>Request Access</button>
               <button onClick={()=>goPage(PAGE_INDEX.browser)} className="btn-ice" style={{fontSize:".88rem"}}>Download Browser</button>
               <button onClick={()=>goPage(PAGE_INDEX.scanner)} className="btn-fire" style={{fontSize:".88rem"}}>Try Scanner →</button>
+              <a href={VEIL_DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="btn-veil" style={{fontSize:".88rem"}}><KeyRound size={15}/> Download VEIL</a>
             </div>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px"}}>
@@ -71,6 +74,7 @@ export default function HeroPage({id,contentH,goPage,isMobile}:Props){
               <button onClick={()=>goPage(PAGE_INDEX.contact)} className="btn-solid" style={{fontSize:".88rem",color:"#000"}}>Request Access</button>
               <button onClick={()=>goPage(PAGE_INDEX.browser)} className="btn-ice" style={{fontSize:".88rem"}}>Download Browser</button>
               <button onClick={()=>goPage(PAGE_INDEX.scanner)} className="btn-fire" style={{fontSize:".88rem"}}>Try Scanner →</button>
+              <a href={VEIL_DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="btn-veil" style={{fontSize:".88rem"}}><KeyRound size={15}/> Download VEIL</a>
             </div>
           </div>
           <div style={{paddingLeft:"clamp(24px,4vw,64px)",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px"}}>

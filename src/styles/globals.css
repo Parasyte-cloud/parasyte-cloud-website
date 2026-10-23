@@ -313,6 +313,39 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;outline:no
     0 16px 44px rgba(0,212,255,0.55);
 }
 
+
+/* VEIL Secret Vault download button: ice to fire gradient border, glass fill, sweeping shine */
+.btn-veil{
+  --veil-ice:#00d4ff; --veil-fire:#ff6a00;
+  position:relative; overflow:hidden; isolation:isolate; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 24px; border-radius:10px; text-decoration:none; white-space:nowrap;
+  font-family:var(--font-rajdhani); font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:#fff;
+  border:1px solid transparent;
+  background:
+    linear-gradient(rgba(8,12,20,.82),rgba(8,12,20,.82)) padding-box,
+    linear-gradient(120deg,var(--veil-ice),rgba(255,255,255,.7) 50%,var(--veil-fire)) border-box;
+  box-shadow:0 2px 0 rgba(255,255,255,.12) inset,-6px 8px 24px rgba(0,212,255,.16),6px 8px 24px rgba(255,106,0,.16);
+  transition:transform .3s cubic-bezier(0.34,1.56,0.64,1),box-shadow .3s ease;
+}
+.btn-veil::before{
+  content:''; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:linear-gradient(120deg,rgba(0,212,255,.22),transparent 45%,rgba(255,106,0,.22));
+}
+.btn-veil::after{
+  content:''; position:absolute; top:0; bottom:0; left:-60%; width:40%; z-index:-1; pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);
+  transform:skewX(-20deg); transition:left .6s ease;
+}
+.btn-veil:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 2px 0 rgba(255,255,255,.18) inset,-8px 12px 34px rgba(0,212,255,.3),8px 12px 34px rgba(255,106,0,.3)}
+.btn-veil:hover::after{left:130%}
+.btn-veil:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.btn-veil svg{flex-shrink:0}
+@media (prefers-reduced-motion:reduce){.btn-veil,.btn-veil::after{transition:none}.btn-veil:hover{transform:none}}
+.nav-actions .btn-veil.nav-action-button{padding:7px 12px!important}
+.mobile-menu-actions .btn-veil{grid-column:1/-1;padding:11px!important;font-size:.78rem!important}
+
 /* ═══════════════════════════════════════
    PULSE / SCROLL
 ═══════════════════════════════════════ */

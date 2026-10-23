@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Car, ChevronDown, Download, ExternalLink, Info, Menu, Smartphone, X } from "lucide-react";
-import { BROWSER_DOWNLOADS, MOBILE_BETA_MAILTO } from "@/lib/downloads";
+import { Car, ChevronDown, Download, ExternalLink, Info, KeyRound, Menu, Smartphone, X } from "lucide-react";
+import { BROWSER_DOWNLOADS, MOBILE_BETA_MAILTO, VEIL_DOWNLOAD_URL } from "@/lib/downloads";
 import { PAGE_INDEX, PAGE_META } from "@/lib/pages";
 
 const ROOM7_DESCRIPTION = "RideArrivo's guest-facing virtual event room for launches, investor calls and town halls.";
@@ -145,6 +145,9 @@ export default function Navbar({ curPage, goPage }: Props) {
             )}
           </div>
 
+          <a href={VEIL_DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="btn-veil nav-action-button" aria-label="Download VEIL Secret Vault">
+            <KeyRound size={13} /> Get VEIL
+          </a>
           <button onClick={() => go(PAGE_INDEX.scanner)} className="btn-ice nav-action-button">Scanner</button>
           <button onClick={() => go(PAGE_INDEX.contact)} className="btn-solid nav-action-button nav-primary-cta">Get Access</button>
         </div>
@@ -197,6 +200,9 @@ export default function Navbar({ curPage, goPage }: Props) {
           </div>
 
           <div className="mobile-menu-actions">
+            <a href={VEIL_DOWNLOAD_URL} target="_blank" rel="noopener noreferrer" className="btn-veil" aria-label="Download VEIL Secret Vault">
+              <KeyRound size={14} /> Download VEIL Secret Vault
+            </a>
             <button onClick={() => go(PAGE_INDEX.scanner)} className="btn-ice">Scanner</button>
             <button onClick={() => go(PAGE_INDEX.contact)} className="btn-solid">Get Access</button>
           </div>
